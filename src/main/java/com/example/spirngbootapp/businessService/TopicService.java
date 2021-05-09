@@ -16,7 +16,20 @@ public class TopicService {
             new Topic("javascript","Core JavaScript language","Core javascript language description")
     );
 
+    // Return a list of all Topics
     public List<Topic> getTopics() {
         return topics;
     }
+
+    // Returns a specific Topic according to the given ID
+    public Topic getTopic(String id) {
+        // A handy way with use of Lambda expressions
+        //return getTopics().stream().filter(topic -> topic.getId().equals(id)).findFirst().get();
+        for (Topic t: topics) {
+            if (t.getId().equals(id))
+                return t;
+        }
+        return null;
+    }
+
 }
