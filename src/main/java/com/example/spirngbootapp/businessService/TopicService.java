@@ -1,20 +1,20 @@
 package com.example.spirngbootapp.businessService;
 
 import com.example.spirngbootapp.model.Topic;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class TopicService {
 
-    private List<Topic> topics = Arrays.asList(
+    private List<Topic> topics = new ArrayList<>(Arrays.asList(
             new Topic("spring","Spring Framework","Spring Framework Description"),
             new Topic("java","Core Java language","Core java language description"),
             new Topic("javascript","Core JavaScript language","Core javascript language description")
-    );
+    ));
 
     // Return a list of all Topics
     public List<Topic> getTopics() {
@@ -32,6 +32,7 @@ public class TopicService {
         return null;
     }
 
+    // Adds a new Topic to the topics list
     public void addTopic(Topic topic) {
         getTopics().add(topic);
     }

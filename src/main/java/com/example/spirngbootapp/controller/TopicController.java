@@ -33,6 +33,8 @@ public class TopicController {
         return service.getTopic(id);
     }
 
+    // Handles the POST Request by converting a JSON object to a Topic
+    // object and adds it to the topics list
     @RequestMapping(method = RequestMethod.POST, value = "/topics")
     public void addTopic(@RequestBody Topic topic) {
         service.addTopic(topic);
