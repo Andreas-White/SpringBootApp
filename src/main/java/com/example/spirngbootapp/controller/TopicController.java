@@ -30,14 +30,20 @@ public class TopicController {
     // Maps the GET Request for a specific Topic
     @RequestMapping("/topics/{id}")
     public Topic getTopic(@PathVariable String id) {
-        return service.getTopic(id);
+        return getService().getTopic(id);
     }
 
     // Handles the POST Request by converting a JSON object to a Topic
     // object and adds it to the topics list
     @RequestMapping(method = RequestMethod.POST, value = "/topics")
     public void addTopic(@RequestBody Topic topic) {
-        service.addTopic(topic);
+        getService().addTopic(topic);
     }
 
+    // Handles the POST Request by converting a JSON object to a Topic
+    // object and adds it to the topics list
+    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
+    public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
+        getService().update(id, topic);
+    }
 }
