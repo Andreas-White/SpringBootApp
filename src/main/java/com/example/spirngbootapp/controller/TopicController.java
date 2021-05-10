@@ -40,8 +40,8 @@ public class TopicController {
         getService().addTopic(topic);
     }
 
-    // Handles the POST Request by converting a JSON object to a Topic
-    // object and adds it to the topics list
+    // Handles the PUT Request by converting a JSON object to a Topic
+    // object and updates the specific topic in the list
     @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
     public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
         getService().update(id, topic);

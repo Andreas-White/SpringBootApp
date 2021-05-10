@@ -41,7 +41,7 @@ public class TopicService {
         int count = 0;
         for (Topic t: getTopics()) {
             if (t.getId().equals(id)) {
-                getTopics().set(count,t);
+                getTopics().set(count,topic);
                 return;
             }
             count++;
