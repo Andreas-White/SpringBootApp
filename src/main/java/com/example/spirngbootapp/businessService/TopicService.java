@@ -37,7 +37,8 @@ public class TopicService {
         getTopics().add(topic);
     }
 
-    public void update(String id, Topic topic) {
+    // Updates a specific topic in the list
+    public void updateTopic(String id, Topic topic) {
         int count = 0;
         for (Topic t: getTopics()) {
             if (t.getId().equals(id)) {
@@ -45,6 +46,15 @@ public class TopicService {
                 return;
             }
             count++;
+        }
+    }
+
+    // Deletes a specific Topic from the list
+    public void deleteTopic(String id) {
+        //getTopics().removeIf(t -> t.getId().equals(id));
+        for (Topic t: getTopics()) {
+            if (t.getId().equals(id))
+                getTopics().remove(t);
         }
     }
 
