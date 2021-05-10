@@ -52,10 +52,7 @@ public class TopicService {
     // Deletes a specific Topic from the list
     public void deleteTopic(String id) {
         //getTopics().removeIf(t -> t.getId().equals(id));
-        for (Topic t: getTopics()) {
-            if (t.getId().equals(id))
-                getTopics().remove(t);
-        }
+        getTopics().remove(getTopic(id));   // reuse of getTopic() method to get and then delete the Topic
     }
 
 }
