@@ -31,11 +31,11 @@ public class CourseService {
         return null;
     }
 
-    public void updateCourse(String name) {
+    public void updateCourse(String name, Course course) {
         int count = 0;
         for (Course c : getAllCourses()) {
             if (c.getName().equals(name))
-                getAllCourses().set(count,c);
+                getAllCourses().set(count,course);
             count++;
         }
     }
