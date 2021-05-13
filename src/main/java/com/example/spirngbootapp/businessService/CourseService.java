@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class CourseService {
 
-    private final List<Course> courses = new ArrayList<Course>() {{
+    private final List<Course> courses = new ArrayList<>() {{
             add(new Course("Algorithms and Data Structures",
                     "A description about Algorithms and Data Structures", 250));
             add(new Course("Spring Boot Tutorial",
