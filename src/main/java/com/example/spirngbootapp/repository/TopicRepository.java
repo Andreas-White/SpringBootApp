@@ -1,4 +1,11 @@
 package com.example.spirngbootapp.repository;
 
-public class TopicRepository {
+import com.example.spirngbootapp.model.Topic;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TopicRepository extends CrudRepository<Topic,String> {
+
+
 }
