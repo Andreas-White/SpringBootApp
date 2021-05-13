@@ -37,8 +37,8 @@ public class CourseController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/courses/{name}")
-    public void updateCourse(@RequestBody Course course,@PathVariable String name) {
-        getService().updateCourse(name, course);
+    public void updateCourse(@RequestBody Course course) {
+        getService().updateCourse(course);
     }
 
     @RequestMapping(method=RequestMethod.DELETE, value="/courses/{name}")

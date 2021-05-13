@@ -1,4 +1,6 @@
 package com.example.spirngbootapp.repository;
 
-public interface CourseRepository {
-}
+import com.example.spirngbootapp.model.Course;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CourseRepository extends CrudRepository<Course,String> {}
