@@ -43,8 +43,8 @@ public class TopicController {
     // Handles the PUT Request by converting a JSON object to a Topic
     // object and updates the specific topic in the list
     @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
-    public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
-        getService().updateTopic(id, topic);
+    public void updateTopic(@RequestBody Topic topic) {
+        getService().updateTopic(topic);
     }
 
     // Handles the DELETE Request by converting a JSON object to a Topic

@@ -1,58 +1,53 @@
 package com.example.spirngbootapp.businessService;
 
 import com.example.spirngbootapp.model.Topic;
+import com.example.spirngbootapp.repository.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class TopicService {
 
-    private List<Topic> topics = new ArrayList<>(Arrays.asList(
-            new Topic("spring","Spring Framework","Spring Framework Description"),
-            new Topic("java","Core Java language","Core java language description"),
-            new Topic("javascript","Core JavaScript language","Core javascript language description")
-    ));
+    private TopicRepository repository;
+
+    public TopicRepository getRepository() {
+        return repository;
+    }
+
+    @Autowired
+    public void setRepository(TopicRepository repository) {
+        this.repository = repository;
+    }
 
     // Return a list of all Topics
     public List<Topic> getTopics() {
-        return topics;
+        List<Topic> topicList = new ArrayList<>();
+        for (Topic t : repository.findAll())
+            topicList.add(t);
+        return topicList;
     }
 
     // Returns a specific Topic according to the given ID
     public Topic getTopic(String id) {
-        // A handy way with use of Lambda expressions
-        //return getTopics().stream().filter(topic -> topic.getId().equals(id)).findFirst().get();
-        for (Topic t: topics) {
-            if (t.getId().equals(id))
-                return t;
-        }
-        return null;
+        return  repository.findById(id).orElseThrow();
     }
 
     // Adds a new Topic to the topics list
     public void addTopic(Topic topic) {
-        getTopics().add(topic);
+        repository.save(topic);
     }
 
     // Updates a specific topic in the list
-    public void updateTopic(String id, Topic topic) {
-        int count = 0;
-        for (Topic t: getTopics()) {
-            if (t.getId().equals(id)) {
-                getTopics().set(count,topic);
-                return;
-            }
-            count++;
-        }
+    public void updateTopic(Topic topic) {
+        repository.save(topic);
     }
 
     // Deletes a specific Topic from the list
     public void deleteTopic(String id) {
-        //getTopics().removeIf(t -> t.getId().equals(id));
-        getTopics().remove(getTopic(id));   // reuse of getTopic() method to get and then delete the Topic
+        repository.deleteById(id);
     }
 
 }
