@@ -2,6 +2,7 @@ package com.example.spirngbootapp.controller;
 
 import com.example.spirngbootapp.businessService.CourseService;
 import com.example.spirngbootapp.model.Course;
+import com.example.spirngbootapp.model.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,27 +22,29 @@ public class CourseController {
         this.service = service;
     }
 
-    @RequestMapping("/courses")
-    public List<Course> getAllCourses() {
-        return getService().getAllCourses();
+    @RequestMapping("/topics/{id}/courses")
+    public List<Course> getAllCourses(@PathVariable String id) {
+        return getService().getAllCourses(id);
     }
 
-    @RequestMapping("/courses/{name}")
+    @RequestMapping("/topics/{id}/courses/{name}")
     public Course getCourse(@PathVariable String name) {
         return getService().getCourse(name);
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/courses")
-    public void addCourse(@RequestBody Course course) {
+    @RequestMapping(method = RequestMethod.POST,value = "/topics/{id}/courses")
+    public void addCourse(@RequestBody Course course,@PathVariable String id) {
+        course.setTopic(new Topic(id,"",""));
         getService().addCourse(course);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/courses/{name}")
-    public void updateCourse(@RequestBody Course course) {
+    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}/courses/{name}")
+    public void updateCourse(@RequestBody Course course, @PathVariable String id) {
+        course.setTopic(new Topic(id,"",""));
         getService().updateCourse(course);
     }
 
-    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{name}")
+    @RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}/courses/{name}")
     public void deleteCourse(@PathVariable String name) {
         getService().deleteCourse(name);
     }

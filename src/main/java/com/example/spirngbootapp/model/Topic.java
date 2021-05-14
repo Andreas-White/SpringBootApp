@@ -7,24 +7,24 @@ import javax.persistence.Id;
 public class Topic {
 
     @Id
-    private String id;
+    private String topic_id;
     private String name;
     private String description;
 
-    public Topic(String id, String name, String description) {
-        this.id = id;
+    public Topic(String topic_id, String name, String description) {
+        this.topic_id = topic_id;
         this.name = name;
         this.description = description;
     }
 
     public Topic() {}
 
-    public String getId() {
-        return id;
+    public String getTopic_id() {
+        return topic_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTopic_id(String id) {
+        this.topic_id = id;
     }
 
     public String getName() {

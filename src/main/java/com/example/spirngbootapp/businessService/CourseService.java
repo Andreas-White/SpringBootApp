@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,12 +23,8 @@ public class CourseService {
         this.repository = repository;
     }
 
-    public List<Course> getAllCourses() {
-        ArrayList<Course> courseList = new ArrayList<>();
-        for (Course c : repository.findAll()) {
-            courseList.add(c);
-        }
-        return courseList;
+    public List<Course> getAllCourses(String name) {
+        return new ArrayList<>(repository.findCourseByTopicId(name));
     }
 
     public Course getCourse(String name) {
