@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CourseRepository extends CrudRepository<Course,String> {
 
-    List<Course> findCourseByTopic(String topicId);
+   // List<Course> findCourseByName(String name);
+
 }

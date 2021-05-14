@@ -11,16 +11,13 @@ public class Course {
     private String name;
     private String description;
     private int price;
-    @ManyToOne
-    private Topic topic;
 
     public Course() {}
 
-    public Course(String name, String description, int price, String topicId) {
+    public Course(String name, String description, int price) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.topic = new Topic(topicId,"","");
     }
 
     public String getName() {
@@ -45,13 +42,5 @@ public class Course {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public Topic getTopic() {
-        return topic;
-    }
-
-    public void setTopic(Topic topic) {
-        this.topic = topic;
     }
 }

@@ -1,12 +1,12 @@
 package com.example.spirngbootapp.businessService;
 
 import com.example.spirngbootapp.model.Course;
+import com.example.spirngbootapp.model.Topic;
 import com.example.spirngbootapp.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -23,9 +23,17 @@ public class CourseService {
         this.repository = repository;
     }
 
-    public List<Course> getAllCourses(String name) {
-        return new ArrayList<>(repository.findCourseByTopicId(name));
+    public Iterable<Course> getAllCourses() {
+        return repository.findAll();
+        /*List<Course> courseList = new ArrayList<>();
+        for (Course c : repository.findAll())
+            courseList.add(c);
+        return courseList;*/
     }
+
+    /*public List<Course> getAllCoursesById(String name) {
+        return new ArrayList<>(repository.findCourseByName(name));
+    }*/
 
     public Course getCourse(String name) {
         return repository.findById(name).orElseThrow();
