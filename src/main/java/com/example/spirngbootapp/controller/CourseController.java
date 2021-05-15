@@ -26,27 +26,27 @@ public class CourseController {
         return getService().getAllCourses();
     }
 
-    /*@RequestMapping("/courses/{name}")
-    public List<Course> getAllCoursesById(@PathVariable String name) {
-        return getService().getAllCoursesById(name);
-    }*/
+    @RequestMapping("/courses/{price}")
+    public List<Course> getAllCoursesById(@PathVariable int price) {
+        return getService().getAllCoursesByPrice(price);
+    }
 
-    @RequestMapping("/courses/{name}")
+    @RequestMapping("/course/{name}")
     public Course getCourse(@PathVariable String name) {
         return getService().getCourse(name);
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/courses")
+    @RequestMapping(method = RequestMethod.POST,value = "/course")
     public void addCourse(@RequestBody Course course) {
         getService().addCourse(course);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/courses/{name}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/course/{name}")
     public void updateCourse(@RequestBody Course course) {
         getService().updateCourse(course);
     }
 
-    @RequestMapping(method=RequestMethod.DELETE, value="/courses/{name}")
+    @RequestMapping(method=RequestMethod.DELETE, value="/course/{name}")
     public void deleteCourse(@PathVariable String name) {
         getService().deleteCourse(name);
     }

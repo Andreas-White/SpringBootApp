@@ -25,15 +25,11 @@ public class CourseService {
 
     public Iterable<Course> getAllCourses() {
         return repository.findAll();
-        /*List<Course> courseList = new ArrayList<>();
-        for (Course c : repository.findAll())
-            courseList.add(c);
-        return courseList;*/
     }
 
-    /*public List<Course> getAllCoursesById(String name) {
-        return new ArrayList<>(repository.findCourseByName(name));
-    }*/
+    public List<Course> getAllCoursesByPrice(int price) {
+        return repository.findCourseByPrice(price);
+    }
 
     public Course getCourse(String name) {
         return repository.findById(name).orElseThrow();
