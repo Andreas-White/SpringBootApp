@@ -1,12 +1,10 @@
 package com.example.spirngbootapp.businessService;
 
 import com.example.spirngbootapp.model.Course;
-import com.example.spirngbootapp.model.Topic;
 import com.example.spirngbootapp.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
